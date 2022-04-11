@@ -6,7 +6,6 @@ import org.apache.spark.sql.catalyst.expressions.{
   AttributeMap,
   AttributeReference
 }
-import org.apache.spark.sql.catalyst.plans.logical.LogicalPlan
 import org.apache.spark.sql.types.StructType
 
 object SchemaUtils {
