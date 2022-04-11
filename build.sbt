@@ -5,7 +5,7 @@ val sparkVersion = "3.2.1"
 val scalatestVersion = "3.2.11"
 
 lazy val commonSettings = Def.settings(
-  organization := "vc.related",
+  organization := "io.github.ravwojdyla",
   version := "0.1.0-SNAPSHOT",
   scalaVersion := "2.12.15",
   crossScalaVersions := Seq(scalaVersion.value),
