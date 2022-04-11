@@ -11,4 +11,4 @@ jobs:
         with:
           distribution: temurin
           java-version: 11
-      - run: sbt -v +test
+      - run: sbt -v "; +test; headerCheckAll; scalafmtCheckAll"
