@@ -1,6 +1,11 @@
 package org.apache.spark.sql
 
-import org.apache.spark.sql.catalyst.expressions.{Attribute, AttributeMap, AttributeReference}
+import org.apache.spark.sql.catalyst.expressions.{
+  Alias,
+  Attribute,
+  AttributeMap,
+  AttributeReference
+}
 import org.apache.spark.sql.catalyst.plans.logical.LogicalPlan
 import org.apache.spark.sql.types.StructType
 
@@ -13,7 +18,7 @@ object SchemaUtils {
         //             nullable property. Also dataType will update nullable as
         //             in the inner fields. We should probably be careful here
         //             and/or assume nullable for everything apart from primary
-        //             keys - which is not bad, ala protobuf3.
+        //             keys - which is not bad, ala protobuf3.percent_rank
         AttributeReference(a.name, b.dataType, b.nullable, b.metadata)(b.exprId, a.qualifier)
       case None => a
     }
@@ -60,8 +65,15 @@ object SchemaUtils {
     val new_attrs = AttributeMap(
       construct_update_attrs(outputs, new_schema).map(i => (i, i.asInstanceOf[Attribute]))
     )
-    val new_plan = ds.queryExecution.analyzed.transformExpressions { case a: AttributeReference =>
-      updateAttr(a, new_attrs)
+    val new_plan = ds.queryExecution.analyzed.transformExpressionsUp {
+      case a: AttributeReference => updateAttr(a, new_attrs)
+      case a: Alias =>
+        Alias(a.child, a.name)(
+          a.exprId,
+          a.qualifier,
+          Some(new_attrs.get(a.toAttribute).get.metadata),
+          a.nonInheritableMetadataKeys
+        )
     }
     Dataset.ofRows(ds.sparkSession, new_plan)
   }
