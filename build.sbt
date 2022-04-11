@@ -39,8 +39,7 @@ lazy val root: Project = project
       "org.scalatest" %% "scalatest" % scalatestVersion % Test,
       "org.apache.spark" %% "spark-core" % sparkVersion % Test classifier "tests",
       "org.apache.spark" %% "spark-sql" % sparkVersion % Test classifier "tests",
-      "org.apache.spark" %% "spark-catalyst" % sparkVersion % Test classifier "tests",
+      "org.apache.spark" %% "spark-catalyst" % sparkVersion % Test classifier "tests"
     )
   )
-  .enablePlugins(JavaAppPackaging)
 
