@@ -6,7 +6,6 @@ val scalatestVersion = "3.2.11"
 
 lazy val commonSettings = Def.settings(
   organization := "io.github.ravwojdyla",
-  version := "0.1.0-SNAPSHOT",
   headerLicense := Some(HeaderLicense.ALv2("2022", "Rafal Wojdyla")),
   scalaVersion := "2.12.15",
   crossScalaVersions := Seq(scalaVersion.value),
@@ -31,7 +30,6 @@ lazy val root: Project = project
   .settings(
     name := "spark-schema-utils",
     description := "spark-schema-utils",
-    run / fork := true,
     libraryDependencies ++= Seq(
       "org.apache.spark" %% "spark-core" % sparkVersion,
       "org.apache.spark" %% "spark-sql" % sparkVersion,
