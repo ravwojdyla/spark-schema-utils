@@ -1,3 +1,29 @@
-.idea
-.bsp
-target
+# scala
+*.class
+*.log
+
+# sbt
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.history
+.cache
+.lib/
+.bsp/
+
+# OS
+.DS_Store
+
+# env
+.java-version
+
+# editors
+.idea/
+*.swp
+.bloop/
+.metals/
+metals.sbt
+.vscode/
