@@ -17,6 +17,14 @@ lazy val commonSettings = Def.settings(
   javacOptions ++= Seq("-source", "1.8", "-target", "1.8"),
   licenses := Seq("Apache 2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt")),
   homepage := Some(url("https://github.com/ravwojdyla/spark-schema-utils")),
+  developers := List(
+    Developer(
+      "ravwojdyla",
+      "Rafal Wojdyla",
+      "ravwojdyla@gmail.com",
+      url("https://github.com/ravwojdyla")
+    )
+  ),
   resolvers += Resolver.sonatypeRepo("public"),
   sonatypeProfileName := "io.github.ravwojdyla",
   sonatypeCredentialHost := "s01.oss.sonatype.org",
